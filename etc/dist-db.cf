@@ -1,0 +1,7 @@
+{
+	listen_addr: ":8877"
+	
+	storage: {
+		
+	}
+}
