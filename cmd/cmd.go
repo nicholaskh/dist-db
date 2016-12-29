@@ -20,9 +20,7 @@ type cmd struct {
 func NewCmd(cmdLine string) *cmd {
 	this := new(cmd)
 	this.cmdLine = this.trimCmdline(cmdLine)
-	log.Error(config.DistDb.Storage.StorageType)
 	this.storage = storage.Factory(config.DistDb.Storage.StorageType)
-	log.Error(this.storage)
 	return this
 }
 
