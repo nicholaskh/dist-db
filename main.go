@@ -25,7 +25,7 @@ func init() {
 
 func main() {
 	distDbServer := server.NewTcpServer("dist-db")
-	distDbServer.Proto = server.NewSimpleProtocol()
+	distDbServer.SetProto(server.NewSimpleProtocol())
 	processor := network.NewProcessor(distDbServer)
 	distDbServer.LaunchTcpServer(config.DistDb.ListenAddr, processor, config.DistDb.SessionTimeout, config.DistDb.ServInitialGoroutineNum)
 	<-make(chan int)

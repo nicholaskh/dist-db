@@ -46,18 +46,18 @@ func (this *cmd) execute() (string, error) {
 	var res string
 	switch this.op {
 	case OP_GET:
-		// params: key
+		// get key
 		var err error
 		if len(this.params) != 1 {
 			return "", ErrSyntaxError
 		}
-		res, err = this.get(this.params[0])
+		res, err = this.cmdGet(this.params[0])
 		if err != nil {
 			return "", err
 		}
 	case OP_SET:
-		// params: key value
-		err := this.set(this.params[0], this.params[1])
+		// set key value
+		err := this.cmdSet(this.params[0], this.params[1])
 		if err != nil {
 			return "", err
 		}
