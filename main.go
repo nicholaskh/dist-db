@@ -5,7 +5,7 @@ import (
 
 	"github.com/nicholaskh/dist-db/config"
 	"github.com/nicholaskh/dist-db/network"
-	server "github.com/nicholaskh/golib/server"
+	"github.com/nicholaskh/golib/server"
 )
 
 func init() {
@@ -25,7 +25,7 @@ func init() {
 
 func main() {
 	distDbServer := server.NewTcpServer("dist-db")
-	distDbServer.SetProto(server.NewSimpleProtocol())
+	distDbServer.SetProtoType(server.SIMPLE)
 	processor := network.NewProcessor(distDbServer)
 	distDbServer.LaunchTcpServer(config.DistDb.ListenAddr, processor, config.DistDb.SessionTimeout, config.DistDb.ServInitialGoroutineNum)
 	<-make(chan int)

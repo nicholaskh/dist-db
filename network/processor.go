@@ -33,7 +33,7 @@ func (this *Processor) OnAccept(c *server.Client) {
 
 		if err != nil {
 			if err == io.EOF {
-                // Client close
+				// Client close
 				client.Close()
 				return
 			} else if nerr, ok := err.(net.Error); ok && nerr.Timeout() {
@@ -41,8 +41,8 @@ func (this *Processor) OnAccept(c *server.Client) {
 				client.Close()
 				return
 			} else if nerr, ok := err.(net.Error); !ok || !nerr.Temporary() {
-                // Most error came here
-                log.Info("client read error: %s", err.Error())
+				// Most error came here
+				log.Info("client read error: %s", err.Error())
 				client.Close()
 				return
 			} else {
